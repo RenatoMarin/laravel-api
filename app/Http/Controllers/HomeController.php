@@ -10,7 +10,7 @@ class HomeController extends Controller
     {
         return 'Hello There! General Kenobi';
     }
-    //Function com parametro name ($name = name) <- para parametro opcional
+    //Function com parametro name ($name = null) <- para parametro opcional
     public function indexWithParameter($name)
     {
         return 'Hello There! ' . $name;
