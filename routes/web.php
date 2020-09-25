@@ -7,6 +7,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FluentController;
 use App\Http\Controllers\UsernewController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +49,29 @@ Route::get('/fluent-string', [FluentController::class, 'index'])->name('fluents.
 //HTTP request and HTML form
 Route::get('/newuser', [UsernewController::class, 'index'])->name('newuser.index');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index')->middleware('check.user');
 
 Route::post('/login', [LoginController::class, 'loginSubmit'])->name('login.submit');
+
+
+//Session Http Session
+Route::get('/session/get', [SessionController::class, 'getSessionData'])->name('session.get');
+
+Route::get('/session/set', [SessionController::class, 'storeSessionData'])->name('session.store');
+
+Route::get('/session/remove', [SessionController::class, 'deleteSessionData'])->name('session.delete');
+
+//DB
+Route::get('/posts', [PostController::class, 'getAllpost'])->name('post.get');
+
+Route::get('/add-post', [PostController::class, 'addPost'])->name('post.add');
+
+Route::post('/add-post', [PostController::class, 'addPostSubmit'])->name('post.submit');
+
+Route::get('/posts/{id}', [PostController::class, 'getPostById'])->name('post.getbyid');
+
+Route::get('/delete-post/{id}', [PostController::class, 'deletePost'])->name('post.delete');
+
+Route::get('/edit-post/{id}', [PostController::class, 'editPost'])->name('post.edit');
+
+Route::post('/update-post', [PostController::class, 'updatePost'])->name('post.update');
