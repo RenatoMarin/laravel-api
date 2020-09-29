@@ -7,4 +7,4 @@ DB_DATABASE=laravel8prodb
 DB_USERNAME=root
 DB_PASSWORD=
 
-Table posts - Colluns id AUTO INCREMENT, title varchar(200), body TEXT
+Para Banco de dados - php artisan migrate
