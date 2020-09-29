@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class,'index'])->name('product.index');
 
-Route::get('/home', [HomeController::class,'index'])->name('home.index');
+//Route::get('/home', [HomeController::class,'index'])->name('home.index');
 
 //Rota controller com Parâmetro
 Route::get('/homeb/{name}', [HomeController::class, 'indexWithParameter'])->name('home.indexWithParameter');
@@ -75,3 +75,31 @@ Route::get('/delete-post/{id}', [PostController::class, 'deletePost'])->name('po
 Route::get('/edit-post/{id}', [PostController::class, 'editPost'])->name('post.edit');
 
 Route::post('/update-post', [PostController::class, 'updatePost'])->name('post.update');
+
+//User DB Join Clause
+Route::get('/inner-join', [PostController::class, 'innerJoinClause'])->name('post.innerjoin');
+//Left Join
+Route::get('/left-join', [PostController::class, 'leftJoinClause'])->name('post.leftjoin');
+//Right Join
+Route::get('/right-join', [PostController::class, 'rightJoinClause'])->name('post.rightjoin');
+
+//Model
+Route::get('/all-posts', [PostController::class, 'getAllPostsUsingModel'])->name('post.getallpostusingmodel');
+
+//Blade Template
+Route::get('/test', function(){
+    return view('test');
+});
+
+//Blade Template Layout
+Route::get('/home', function(){
+    return view('index');
+});
+
+Route::get('/about', function(){
+    return view('about');
+});
+
+Route::get('/contact', function(){
+    return view('contact');
+});
